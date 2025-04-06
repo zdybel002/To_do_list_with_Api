@@ -1,0 +1,7 @@
+.modalWindowsBtns {
+    display: flex;
+    flex-direction: column;
+}
+.newCategoryInput {
+    margin-bottom: 20px;
+}

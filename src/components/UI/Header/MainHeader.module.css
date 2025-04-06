@@ -1,0 +1,38 @@
+.main-header {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #3e3a3e;
+    padding: 0 3rem;
+}
+
+.main-header h1 {
+    color: white;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+.header_logo_heading {
+    display: inline;
+    color: rgb(240, 227, 227);
+}
+.header_btm {
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    background-color: #6f81fd;
+    border-radius: 10px;
+    border: none;
+}
+.header_img_logo {
+    width: 50px;
+}
+
+.container_logo {
+    display: flex;
+    align-items: center;
+}

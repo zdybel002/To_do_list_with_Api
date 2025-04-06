@@ -1,0 +1,18 @@
+.main_block {
+    padding-top: 2vh;
+    padding-left: 5vh;
+    width: 20%;
+    height: 80vh;
+    background-color: #f0f1ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* .taskLiItem {
+  width: 49%;
+  background-color: #f0f1ff;
+  display: flex;
+  margin-bottom: 7px;
+  padding: 10px;
+} */

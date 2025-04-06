@@ -1,0 +1,75 @@
+/* Stylizacja tła modala */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* Stylizacja modala */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-height: 80vh;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 30;
+    overflow-y: auto;
+    animation: slide-down 300ms ease-out forwards;
+}
+
+/* Responsywność dla większych ekranów */
+@media (min-width: 768px) {
+    .modal {
+        width: 40rem;
+    }
+}
+
+/* Animacja pojawiania się modala */
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% - 3rem));
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Blokowanie przewijania strony, gdy modal jest otwarty */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Stylizacja przycisków + i - */
+/* .modal button {
+    border: 2px solid #6a0572;
+    background: transparent;
+    color: #6a0572;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+} */
+
+/* .modal button:hover {
+    background: #6a0572;
+    color: white;
+} */
+
+/* Stylizacja elementów w koszyku */
+/* .modal .cart-item {
+    border-bottom: 1px solid #6a0572;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+} */

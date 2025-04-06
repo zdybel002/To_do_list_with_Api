@@ -1,0 +1,19 @@
+.main_task_btm {
+    margin-bottom: 10px;
+}
+.show_btm {
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    background-color: #6f81fd;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.taskContainer {
+    display: flex;
+}
+
+.CurrentTaskContainer {
+    width: 100%;
+}
