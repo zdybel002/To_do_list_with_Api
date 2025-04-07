@@ -52,6 +52,9 @@ const CategoryItem = (props) => {
 
         setShowMenu(false);
     };
+    const handelClick = () => {
+        setClicked(false);
+    };
 
     return (
         <>
@@ -61,6 +64,7 @@ const CategoryItem = (props) => {
                 onShowTaskHandler={props.onShowTaskHandler}
                 onContextMenu={handleRightClick}
                 clicked={clicked}
+                onHandleClick={handelClick}
                 className={styles.CategoryNameItem}
                 title={props.title}
             />

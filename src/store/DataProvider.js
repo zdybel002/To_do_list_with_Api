@@ -69,27 +69,36 @@ const DataProvider = ({ children }) => {
         }
     };
 
-    const updateCategory = async (categoryData) => {
+    const updateCategory = async (newCategory) => {
         try {
-            const updatedCategory = await fetchData(
+            if (!newCategory || typeof newCategory !== "object") {
+                throw new Error("Niepoprawne dane wejściowe (newCategory)");
+            }
+
+            const response = await fetch(
                 "http://localhost:8080/category/update",
                 {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(categoryData),
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(newCategory),
                 }
             );
 
-            if (Array.isArray(updatedCategory)) {
-                setData(updatedCategory);
-                console.log("Odpowiedź z serwera:", updatedCategory);
-            } else {
-                console.warn("Niespodziewana odpowiedź:", updatedCategory);
+            if (!response.ok) {
+                throw new Error(`Błąd serwera: ${response.status}`);
             }
+
+            // Sprawdzanie, czy odpowiedź zawiera dane
+            const responseText = await response.text();
+            if (responseText) {
+                const data = JSON.parse(responseText); // Parsujemy tylko, jeśli odpowiedź nie jest pusta
+                console.log("Odpowiedź z serwera:", data);
+            } else {
+                console.log("Serwer zwrócił pustą odpowiedź.");
+            }
+            fetchAllCategories();
         } catch (error) {
-            console.error("Błąd podczas aktualizacji kategorii:", error);
+            console.error("Wystąpił błąd przy fetchu:", error.message);
         }
     };
 

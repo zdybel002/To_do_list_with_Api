@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-// import fetchUpdateTask from "../../../Request/UpdateTask";
-
+import React, { useState, useEffect, useContext } from "react";
+import { DataContext } from "../../../store/DataContext";
 function EditableText(props) {
     const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState("start");
+
+    const { updateCategory } = useContext(DataContext); // Pobieramy dane z kontekstu
 
     useEffect(() => {
         console.log("Use effect ", props.clicked);
@@ -19,9 +20,28 @@ function EditableText(props) {
         if (e.key === "Enter") {
             setIsEditing(false); // Zatwierdź zmianę
             // fetchUpdateTask(props.id, text, props.user.id);
-            console.log("MY REquest ", props.id);
-            console.log("MY user ", props.user.id);
+            updateCategory({
+                id: props.id,
+                title: text,
+                user: {
+                    id: props.user.id,
+                },
+            });
+            props.onHandleClick(false);
         }
+    };
+
+    const handleBlur = () => {
+        setIsEditing(false); // Zatwierdź zmianę
+        // fetchUpdateTask(props.id, text, props.user.id);
+        updateCategory({
+            id: props.id,
+            title: text,
+            user: {
+                id: props.user.id,
+            },
+        });
+        props.onHandleClick(false);
     };
 
     return (
@@ -32,6 +52,7 @@ function EditableText(props) {
                     value={text}
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
+                    onBlur={handleBlur}
                     autoFocus
                 />
             ) : (
