@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import ContextMenu from "../CategoryMenu/CategoryItemMenu";
+import CategoryItemMenu from "../CategoryMenu/CategoryItemMenu";
+import EditableText from "./EditableText";
 
 import styles from "./CategoryItem.module.css";
 
@@ -16,10 +17,6 @@ const CategoryItem = (props) => {
             x: event.clientX,
             y: event.clientY,
         });
-    };
-    const handleEdit = () => {
-        alert("Edytujesz element!");
-        setShowMenu(false);
     };
 
     const handleDelete = () => {
@@ -48,18 +45,28 @@ const CategoryItem = (props) => {
         };
     }, [showMenu]);
 
+    const [clicked, setClicked] = useState(false);
+
+    const handleEdit = () => {
+        setClicked(true);
+
+        setShowMenu(false);
+    };
+
     return (
         <>
-            <div
+            <EditableText
+                user={props.user}
                 id={props.id}
-                onClick={props.onShowTaskHandler}
+                onShowTaskHandler={props.onShowTaskHandler}
                 onContextMenu={handleRightClick}
+                clicked={clicked}
                 className={styles.CategoryNameItem}
-            >
-                {props.title}
-            </div>
+                title={props.title}
+            />
+
             {showMenu && (
-                <ContextMenu
+                <CategoryItemMenu
                     position={menuPosition}
                     onEdit={handleEdit}
                     onDelete={handleDelete}

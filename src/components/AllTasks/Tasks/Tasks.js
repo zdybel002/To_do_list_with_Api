@@ -5,6 +5,7 @@ import CurrentTask from "../CurrentTask/CurrentTask";
 import styles from "./Tasks.module.css";
 import Categories from "../../Categories/AllCategories/Categories";
 import Wrapper from "../../UI/Categoriy_list_wraper/Wrapper";
+
 import NewCategory from "../../Categories/NewCategory/BtmNewCategory";
 import NewTask from "../NewTask/NewTask";
 
@@ -25,7 +26,7 @@ function Tasks() {
                 </Wrapper>
 
                 <div className={styles.CurrentTaskContainer}>
-                    <CurrentTask idOfCategory={idTakenCategory}></CurrentTask>
+                    {/* <CurrentTask idOfCategory={idTakenCategory}></CurrentTask> */}
                     <NewTask></NewTask>
                 </div>
             </div>

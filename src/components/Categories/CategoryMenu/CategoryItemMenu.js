@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./CategoryItemMenu.module.css";
 
-function ContextMenu({ position, onEdit, onDelete, onClose }) {
+function CategoryItemMenu({ position, onEdit, onDelete, onClose }) {
     return (
         <div
             className={styles.context_menu}
@@ -24,4 +24,4 @@ function ContextMenu({ position, onEdit, onDelete, onClose }) {
     );
 }
 
-export default ContextMenu;
+export default CategoryItemMenu;

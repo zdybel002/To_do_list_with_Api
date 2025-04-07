@@ -3,6 +3,7 @@ import Tasks from "./components/AllTasks/Tasks/Tasks";
 import MainHeader from "./components/UI/Header/MainHeader";
 import React, { useEffect, useContext, useState } from "react";
 
+import DataProvider from "./store/DataProvider";
 import ModalInput from "./components/Categories/NewCategory/ModalInput";
 import { ModalWindowContext } from "./store/ModalWindowProvider";
 
@@ -35,15 +36,22 @@ function App() {
 
     return (
         <div>
-            <MainHeader isAutherticated={isLoggedIn} onLogout={logoutHandler} />
-            <main>
-                {!isLoggedIn && <Login onLogin={loginHandlee} />}
-                {/* Pokazanie koszyka, jeśli modal jest widoczny */}{" "}
-                {modalContext.windowIsVisible && (
-                    <ModalInput onHideCart={modalContext.hideWindowHandler} />
-                )}
-                {isLoggedIn && <Tasks />}
-            </main>
+            <DataProvider>
+                <MainHeader
+                    isAutherticated={isLoggedIn}
+                    onLogout={logoutHandler}
+                />
+                <main>
+                    {!isLoggedIn && <Login onLogin={loginHandlee} />}
+                    {/* Pokazanie koszyka, jeśli modal jest widoczny */}{" "}
+                    {modalContext.windowIsVisible && (
+                        <ModalInput
+                            onHideCart={modalContext.hideWindowHandler}
+                        />
+                    )}
+                    {isLoggedIn && <Tasks />}
+                </main>
+            </DataProvider>
         </div>
     );
 }
