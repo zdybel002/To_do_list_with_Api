@@ -1,5 +1,5 @@
 import Login from "./components/Login/Login";
-import Tasks from "./components/AllTasks/Tasks/Tasks";
+import Tasks from "./components/main/Main";
 import MainHeader from "./components/UI/Header/MainHeader";
 import React, { useEffect, useContext, useState } from "react";
 

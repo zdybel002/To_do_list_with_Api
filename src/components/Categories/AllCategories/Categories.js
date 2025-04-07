@@ -12,15 +12,18 @@ const Categories = (props) => {
 
     return (
         <ul className={styles.categories_list}>
-            {data.map((item) => (
-                <CategoryItem
-                    user={item.user}
-                    id={item.id}
-                    key={item.id}
-                    className={styles.categories_list_item}
-                    title={item.title}
-                />
-            ))}
+            <>
+                {console.log("Categories ", data)}
+                {data.map((item) => (
+                    <CategoryItem
+                        user={item.user}
+                        id={item.id}
+                        key={item.id}
+                        className={styles.categories_list_item}
+                        title={item.title}
+                    />
+                ))}
+            </>
         </ul>
     );
 };

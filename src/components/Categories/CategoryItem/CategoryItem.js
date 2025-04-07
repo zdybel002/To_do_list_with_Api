@@ -65,7 +65,6 @@ const CategoryItem = (props) => {
             <EditableText
                 user={props.user}
                 id={props.id}
-                onShowTaskHandler={props.onShowTaskHandler}
                 onContextMenu={handleRightClick}
                 clicked={clicked}
                 onHandleClick={handelClick}
