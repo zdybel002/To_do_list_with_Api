@@ -4,10 +4,6 @@ import { DataContext } from "../../../store/DataContext";
 import styles from "./Categories.module.css";
 
 const Categories = (props) => {
-    const showTaskHandler = (event) => {
-        props.onAddCurrentTasks(event.target.id);
-    };
-
     const { data, fetchAllCategories } = useContext(DataContext); // Pobieramy dane z kontekstu
 
     useEffect(() => {
@@ -22,7 +18,6 @@ const Categories = (props) => {
                     id={item.id}
                     key={item.id}
                     className={styles.categories_list_item}
-                    onShowTaskHandler={showTaskHandler}
                     title={item.title}
                 />
             ))}

@@ -104,24 +104,29 @@ const DataProvider = ({ children }) => {
 
     const removeCategory = async (categoryId) => {
         try {
-            const removedCategory = await fetchData(
+            const response = await fetch(
                 `http://localhost:8080/category/delete/${categoryId}`,
                 {
                     method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
+                    headers: { "Content-Type": "application/json" },
                 }
             );
 
-            if (Array.isArray(removedCategory)) {
-                setData(removedCategory);
-                console.log("Odpowiedź z serwera:", removedCategory);
-            } else {
-                console.warn("Niespodziewana odpowiedź:", removedCategory);
+            if (!response.ok) {
+                throw new Error(`Błąd serwera: ${response.status}`);
             }
+
+            // Sprawdzanie, czy odpowiedź zawiera dane
+            const responseText = await response.text();
+            if (responseText) {
+                const data = JSON.parse(responseText); // Parsujemy tylko, jeśli odpowiedź nie jest pusta
+                console.log("Odpowiedź z serwera:", data);
+            } else {
+                console.log("Serwer zwrócił pustą odpowiedź.");
+            }
+            fetchAllCategories();
         } catch (error) {
-            console.error("Błąd podczas usuwania kategorii:", error);
+            console.error("Wystąpił błąd przy fetchu:", error.message);
         }
     };
 

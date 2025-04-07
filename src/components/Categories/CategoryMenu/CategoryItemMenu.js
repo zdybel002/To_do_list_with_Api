@@ -17,9 +17,6 @@ function CategoryItemMenu({ position, onEdit, onDelete, onClose }) {
             <button onClick={onDelete} className={styles.buttonStyle}>
                 Delete
             </button>
-            <button onClick={onClose} className={styles.buttonStyle}>
-                ✖
-            </button>
         </div>
     );
 }

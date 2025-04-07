@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import CategoryItemMenu from "../CategoryMenu/CategoryItemMenu";
 import EditableText from "./EditableText";
+
+import { DataContext } from "../../../store/DataContext";
 
 import styles from "./CategoryItem.module.css";
 
 const CategoryItem = (props) => {
+    const { removeCategory } = useContext(DataContext); // Pobieramy dane z kontekstu
+
     const [showMenu, setShowMenu] = useState(false);
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
 
@@ -17,18 +21,6 @@ const CategoryItem = (props) => {
             x: event.clientX,
             y: event.clientY,
         });
-    };
-
-    const handleDelete = () => {
-        const confirmed = window.confirm("Na pewno chcesz usunąć?");
-        if (confirmed) {
-            alert("Element usunięty!");
-        }
-        setShowMenu(false);
-    };
-
-    const handleCloseMenu = () => {
-        setShowMenu(false);
     };
 
     // Nasłuchiwanie kliknięć poza menu
@@ -45,6 +37,7 @@ const CategoryItem = (props) => {
         };
     }, [showMenu]);
 
+    // Edit Category
     const [clicked, setClicked] = useState(false);
 
     const handleEdit = () => {
@@ -54,6 +47,17 @@ const CategoryItem = (props) => {
     };
     const handelClick = () => {
         setClicked(false);
+    };
+
+    //Delete category
+
+    const handleDelete = () => {
+        // const confirmed = window.confirm("Na pewno chcesz usunąć?");
+        // if (confirmed) {
+        //     alert("Element usunięty!");
+        // }
+        removeCategory(props.id);
+        setShowMenu(false);
     };
 
     return (
@@ -74,7 +78,6 @@ const CategoryItem = (props) => {
                     position={menuPosition}
                     onEdit={handleEdit}
                     onDelete={handleDelete}
-                    onClose={handleCloseMenu}
                 />
             )}
         </>
