@@ -6,28 +6,34 @@ const TaskProvider = ({ children }) => {
     const [categoryTitle, setCategoryTitle] = useState();
     const [taskData, setTaskData] = useState([]);
 
-    const fetchTasks = (categoryId) => {
-        fetch("http://localhost:8080/task/category", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ categoryId }), // ✅ ważne!
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`Server error: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log("Full response from server:", data);
-                setTaskData(data);
-                const tasks = data.content;
-            })
-            .catch((error) => {
-                console.error("Error posting data:", error);
+    const fetchTasks = async (categoryId) => {
+        try {
+            const response = await fetch("http://localhost:8080/task/search", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: "email3@gmail.com",
+                    categoryId: categoryId,
+                    pageNumber: 0,
+                    completed: 0,
+                    pageSize: 100,
+                    sortColumn: "taskDate",
+                    sortDirection: "asc",
+                }),
             });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log("Response from server FetchTascks: ", data);
+            setTaskData(data.content);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     const AddNewTask = async (categoryId, categoryTitle) => {
@@ -41,9 +47,12 @@ const TaskProvider = ({ children }) => {
                     title: categoryTitle,
                     completed: false,
                     taskDate: new Date(),
-                    priority: { id: 30111 },
-                    category: { id: categoryId },
-                    user: { id: 10027 },
+                    category: {
+                        id: categoryId,
+                    },
+                    user: {
+                        id: 10027,
+                    },
                 }),
             });
 
@@ -52,7 +61,29 @@ const TaskProvider = ({ children }) => {
             }
 
             const data = await response.json();
-            console.log("Response from server:", data);
+            console.log("Response from server UPDATE:", data);
+            fetchTasks(categoryId);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    const deleteTask = async (taskID) => {
+        try {
+            const response = await fetch(
+                `http://localhost:8080/task/delete/${taskID}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
             fetchTasks(categoryId);
         } catch (error) {
             console.error("Error:", error);
@@ -69,6 +100,7 @@ const TaskProvider = ({ children }) => {
                 setCategoryTitle,
                 fetchTasks,
                 AddNewTask,
+                deleteTask,
             }}
         >
             {children}

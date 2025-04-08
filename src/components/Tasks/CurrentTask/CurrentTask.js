@@ -1,27 +1,44 @@
-import { React, useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { TaskContext } from "../../../store/TaskContext";
-
 import styles from "./CurrentTask.module.css";
 
 function CurrentTask(props) {
-    const { categoryId, categoryTitle, taskData, fetchTasks } =
+    const { categoryId, categoryTitle, taskData, deleteTask } =
         useContext(TaskContext);
 
-    // const [Tasks, setTasks] = useState([]);
-    // const [title, setTitle] = useState("");
     const [currentOrFinishe, setCurrentOrFinished] = useState(0);
-
-    // useEffect(() => {
-    //     if (categoryId !== null) {
-    //         fetchTasks(categoryId); // Fetch tasks when idOfCategory changes
-    //     }
-    // }, [categoryId]);
 
     const handleChange = (event) => {
         if (event.target.value === "current") {
             setCurrentOrFinished(0);
         } else {
             setCurrentOrFinished(1);
+        }
+    };
+
+    // ⬇️ Zmieniamy pojedynczy stan na obiekt
+    const [checkedState, setCheckedState] = useState({});
+
+    // Inicjalizuj checkedState kiedy taskData się zmieni
+    useEffect(() => {
+        const initialState = {};
+        taskData.forEach((task) => {
+            initialState[task.id] = false;
+        });
+        setCheckedState(initialState);
+    }, [taskData]);
+
+    const handleCheckboxChange = (event) => {
+        const checkboxId = event.target.id;
+        const checked = event.target.checked;
+
+        setCheckedState((prevState) => ({
+            ...prevState,
+            [checkboxId]: checked,
+        }));
+
+        if (checked) {
+            deleteTask(checkboxId);
         }
     };
 
@@ -38,19 +55,18 @@ function CurrentTask(props) {
 
             <main>
                 <ul className={styles.current_list}>
-                    {taskData.map((task) => {
-                        return (
-                            <li key={task.id} className={styles.taskLiItem}>
-                                <input
-                                    type="checkbox"
-                                    className={styles.currentTaskCheckbox}
-                                />
-                                <p className={styles.taskItemText}>
-                                    {task.title}
-                                </p>
-                            </li>
-                        );
-                    })}
+                    {taskData.map((task) => (
+                        <li key={task.id} className={styles.taskLiItem}>
+                            <input
+                                id={task.id}
+                                type="checkbox"
+                                className={styles.currentTaskCheckbox}
+                                checked={checkedState[task.id] || false}
+                                onChange={handleCheckboxChange}
+                            />
+                            <p className={styles.taskItemText}>{task.title}</p>
+                        </li>
+                    ))}
                 </ul>
             </main>
         </div>

@@ -8,6 +8,7 @@ function NewTask(props) {
         if (event.key === "Enter") {
             console.log("Wpisano:", event.target.value);
 
+            console.log("New Task: ", categoryId);
             AddNewTask(categoryId, event.target.value);
 
             event.target.value = "";
