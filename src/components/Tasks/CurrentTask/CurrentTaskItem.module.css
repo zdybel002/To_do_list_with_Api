@@ -1,0 +1,7 @@
+.taskLiItem {
+    display: flex;
+}
+
+.currentTaskCheckbox {
+    margin-right: 10px;
+}

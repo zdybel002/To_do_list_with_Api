@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import CurrentTask from "../Tasks/CurrentTask/CurrentTask";
+import CurrentTask from "../Tasks/CurrentTask/CurrentTasks";
 
 import Categories from "../Categories/AllCategories/Categories";
 import Wrapper from "../UI/Categoriy_list_wraper/Wrapper";

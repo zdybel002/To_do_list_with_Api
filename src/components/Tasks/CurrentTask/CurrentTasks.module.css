@@ -17,10 +17,3 @@
     padding: 20px;
     font-size: 30px;
 }
-.taskLiItem {
-    display: flex;
-}
-
-.currentTaskCheckbox {
-    margin-right: 10px;
-}

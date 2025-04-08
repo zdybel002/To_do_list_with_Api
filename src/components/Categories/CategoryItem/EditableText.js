@@ -24,7 +24,13 @@ function EditableText(props) {
         if (e.key === "Enter") {
             setIsEditing(false); // Zatwierdź zmianę
             // fetchUpdateTask(props.id, text, props.user.id);
-            updateCategory(props.id);
+            updateCategory({
+                id: props.id,
+                title: text,
+                user: {
+                    id: props.user.id,
+                },
+            });
             props.onHandleClick(false);
         }
     };

@@ -90,6 +90,32 @@ const TaskProvider = ({ children }) => {
         }
     };
 
+    const updateTask = async (taskID, categoryTitle) => {
+        const task = taskData.find((t) => t.id === taskID);
+        const updatedTask = {
+            ...task,
+            title: categoryTitle, // <- tylko to zmieniasz
+        };
+
+        try {
+            const response = await fetch("http://localhost:8080/task/update", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedTask),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            fetchTasks(categoryId);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
     return (
         <TaskContext.Provider
             value={{
@@ -101,6 +127,7 @@ const TaskProvider = ({ children }) => {
                 fetchTasks,
                 AddNewTask,
                 deleteTask,
+                updateTask,
             }}
         >
             {children}
