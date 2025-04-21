@@ -1,12 +1,13 @@
 .task_input {
+    width: 78%;
     position: fixed;
     bottom: 0;
-    width: 50%;
+
     display: block;
     height: 5vh;
     border: 1px solid #a6aeae;
     padding: 10px;
-    margin: 20px;
-    margin-left: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
     border-radius: 5px;
 }

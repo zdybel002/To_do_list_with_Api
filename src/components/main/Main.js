@@ -22,11 +22,12 @@ function Tasks() {
         <React.Fragment>
             <div className={styles.taskContainer}>
                 <TaskProvider>
-                    <Wrapper>
+                    <div className={styles.rightNav}>
                         <Categories onAddCurrentTasks={addCurrentTasks} />
 
                         <NewCategory />
-                    </Wrapper>
+                    </div>
+
                     <div className={styles.CurrentTaskContainer}>
                         <CurrentTask
                             idOfCategory={idTakenCategory}

@@ -5,3 +5,47 @@
 .newCategoryInput {
     margin-bottom: 20px;
 }
+
+.newCategoryInput {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    border: 1px solid #bcdfff;
+    border-radius: 8px;
+    background-color: #f5faff;
+    font-size: 16px;
+    color: #333;
+}
+
+.newCategoryInput:focus {
+    outline: none;
+    border-color: #007bff;
+    background-color: #ffffff;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.modalWindowsBtns {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.modalBtn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #6f81fd;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modalBtn:hover {
+    background-color: #005ecb;
+}

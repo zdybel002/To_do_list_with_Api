@@ -1,0 +1,33 @@
+.categoryItemWrapper {
+    margin: 8px 0;
+}
+
+.categoryInput {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #bcdfff;
+    border-radius: 8px;
+    background-color: #f5faff;
+    font-size: 16px;
+    color: #333;
+}
+
+.categoryInput:focus {
+    outline: none;
+    border-color: #007bff;
+    background-color: #ffffff;
+}
+
+.categoryDisplay {
+    padding: 10px 14px;
+    border-radius: 8px;
+    background-color: #e6f0fa;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: #007bff;
+}
+
+.categoryDisplay:hover {
+    background-color: #d8ebff;
+}

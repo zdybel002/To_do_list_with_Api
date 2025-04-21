@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { CategoryContext } from "../../../store/CategoryContext";
 import { TaskContext } from "../../../store/TaskContext";
 
+import styles from "./EditableText.module.css";
+
 function EditableText(props) {
     const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState("start");
@@ -56,7 +58,7 @@ function EditableText(props) {
     };
 
     return (
-        <div>
+        <div className={styles.categoryItemWrapper}>
             {isEditing ? (
                 <input
                     type="text"
@@ -65,9 +67,11 @@ function EditableText(props) {
                     onKeyDown={handleKeyDown}
                     onBlur={handleBlur}
                     autoFocus
+                    className={styles.categoryInput}
                 />
             ) : (
                 <div
+                    className={styles.categoryDisplay}
                     onClick={takeCategoryID}
                     onContextMenu={props.onContextMenu}
                 >

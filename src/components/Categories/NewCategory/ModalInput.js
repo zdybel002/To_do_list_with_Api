@@ -51,12 +51,20 @@ const ModalInput = (props) => {
                 className={styles.newCategoryInput}
             />
 
-            {/* Warunkowe renderowanie komunikatu o błędzie */}
-            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+            {errorMessage && (
+                <p className={styles.errorMessage}>{errorMessage}</p>
+            )}
 
-            <div className="modalWindowsBtns">
-                <button onClick={handleAddCategory}>Save</button>
-                <button onClick={modalContext.hideWindowHandler}>Cancel</button>
+            <div className={styles.modalWindowsBtns}>
+                <button onClick={handleAddCategory} className={styles.modalBtn}>
+                    Save
+                </button>
+                <button
+                    onClick={modalContext.hideWindowHandler}
+                    className={styles.modalBtn}
+                >
+                    Cancel
+                </button>
             </div>
         </Modal>
     );

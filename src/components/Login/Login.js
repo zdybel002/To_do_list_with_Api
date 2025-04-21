@@ -16,20 +16,30 @@ const Login = () => {
 
     return (
         <Card className={styles.login}>
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Hasło"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <div className={styles.actions}>
-                <button onClick={handleLoginClick}>Zaloguj</button>
+            <div className={styles.loginContainer}>
+                <h2 className={styles.title}>Task Manager</h2>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={styles.loginInput}
+                />
+                <input
+                    type="password"
+                    placeholder="Hasło"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={styles.loginInput}
+                />
+                <div className={styles.loginActions}>
+                    <button
+                        onClick={handleLoginClick}
+                        className={styles.loginButton}
+                    >
+                        Log in
+                    </button>
+                </div>
             </div>
             {loginError && <p className={styles.error}>{loginError}</p>}
         </Card>

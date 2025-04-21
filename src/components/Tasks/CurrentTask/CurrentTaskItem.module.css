@@ -5,3 +5,54 @@
 .currentTaskCheckbox {
     margin-right: 10px;
 }
+
+.taskLiItem {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #f0f8ff;
+    border: 1px solid #d6eaff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.05);
+    transition: background-color 0.2s;
+}
+
+.taskLiItem:hover {
+    background-color: #e6f0fa;
+}
+
+.currentTaskCheckbox {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff;
+    cursor: pointer;
+}
+
+.taskEditInput {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #bcdfff;
+    border-radius: 8px;
+    background-color: #f5faff;
+    color: #333;
+}
+
+.taskEditInput:focus {
+    outline: none;
+    border-color: #007bff;
+    background-color: #ffffff;
+}
+
+.taskItemText {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+    border-radius: 8px;
+    cursor: default;
+    user-select: none;
+    word-break: break-word;
+}

@@ -91,7 +91,6 @@ const CurrentTaskItem = (props) => {
 
     return (
         <li className={styles.taskLiItem}>
-            {/* Mark task completed if check the input */}
             <input
                 id={props.id}
                 type="checkbox"
@@ -100,26 +99,25 @@ const CurrentTaskItem = (props) => {
                 onChange={handleCheckboxChange}
             />
 
-            {/* Edit task */}
             {isEditing ? (
                 <input
                     type="text"
                     value={text}
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
-                    onBlur={handleBlur} // <-- poprawka: nie używamy handleKeyDown tutaj
+                    onBlur={handleBlur}
                     autoFocus
+                    className={styles.taskEditInput}
                 />
             ) : (
                 <p
                     className={styles.taskItemText}
-                    onContextMenu={handleRightClick} // <-- poprawka: użyj lokalnego handlera
+                    onContextMenu={handleRightClick}
                 >
                     {props.title}
                 </p>
             )}
 
-            {/* Menu if click right button on mouse */}
             {showMenu && (
                 <TaskItemMenu position={menuPosition} onEdit={handleEdit} />
             )}

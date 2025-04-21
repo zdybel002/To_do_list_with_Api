@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../Categories/CategoryItem/CategoryItem.module.css";
+import styles from "./TaskItemMenu.module.css";
 
 function TaskItemMenu({ position, onEdit, onDelete, onClose }) {
     return (

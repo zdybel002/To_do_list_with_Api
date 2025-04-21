@@ -1,3 +1,9 @@
+.rightNav {
+    margin-left: 20px;
+    width: 20%;
+    height: 80vh;
+    background-color: #f0f1ff;
+}
 .main_task_btm {
     margin-bottom: 10px;
 }
@@ -11,9 +17,11 @@
 }
 
 .taskContainer {
+    max-width: 97%;
     display: flex;
 }
 
 .CurrentTaskContainer {
-    width: 100%;
+    margin-left: 20px;
+    width: 95%;
 }

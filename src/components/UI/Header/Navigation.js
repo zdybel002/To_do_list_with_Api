@@ -10,14 +10,14 @@ const Navigation = (props) => {
     return (
         <nav className={styles.nav}>
             <ul>
-                {isLoggedIn && (
+                {/* {isLoggedIn && (
                     <li>
                         <a href="/">Админ</a>
                     </li>
-                )}
+                )} */}
                 {isLoggedIn && (
                     <li>
-                        <button onClick={logoutHandler}>Выйти</button>
+                        <button onClick={logoutHandler}>Log out</button>
                     </li>
                 )}
             </ul>

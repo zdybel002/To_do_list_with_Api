@@ -7,23 +7,8 @@ import styles from "./CurrentTasks.module.css";
 function CurrentTasks(props) {
     const { categoryTitle, taskData } = useContext(TaskContext);
 
-    const [currentOrFinishe, setCurrentOrFinished] = useState(0);
-
-    const handleChange = (event) => {
-        if (event.target.value === "current") {
-            setCurrentOrFinished(0);
-        } else {
-            setCurrentOrFinished(1);
-        }
-    };
-
     return (
         <div className={styles.CurrentTaskContainer}>
-            <select name="browser" id="browser" onChange={handleChange}>
-                <option value="current">Current</option>
-                <option value="finished">Finished</option>
-            </select>
-
             <header className={styles.currentTaskHeader}>
                 <h3 className={styles.categoryHeading}>{categoryTitle}</h3>
             </header>
