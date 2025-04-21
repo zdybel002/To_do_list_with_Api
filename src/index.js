@@ -3,14 +3,13 @@ import ReactDOM from "react-dom";
 
 import "./index.css";
 import App from "./App";
-import { AuthContexProvider } from "./store/auth-contex";
 import { ModalWindowProvider } from "./store/ModalWindowProvider";
-
+import LoginProvider from "./store/LoginProvider";
 ReactDOM.render(
-    <AuthContexProvider>
+    <LoginProvider>
         <ModalWindowProvider>
             <App />
         </ModalWindowProvider>
-    </AuthContexProvider>,
+    </LoginProvider>,
     document.getElementById("root")
 );

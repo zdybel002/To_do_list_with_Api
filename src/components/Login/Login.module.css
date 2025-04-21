@@ -1,9 +1,15 @@
 .actions {
-  text-align: center;
+    text-align: center;
 }
 .login {
-  width: 90%;
-  max-width: 40rem;
-  margin: 3rem auto;
-  padding: 3rem;
+    width: 90%;
+    max-width: 40rem;
+    margin: 3rem auto;
+    padding: 3rem;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
 }

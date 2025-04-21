@@ -1,14 +1,15 @@
 import { useEffect, useContext } from "react";
 import CategoryItem from "../CategoryItem/CategoryItem";
-import { DataContext } from "../../../store/DataContext";
+import { CategoryContext } from "../../../store/CategoryContext";
 import styles from "./Categories.module.css";
 
 const Categories = (props) => {
-    const { data, fetchAllCategories } = useContext(DataContext); // Pobieramy dane z kontekstu
+    const { data, fetchAllCategories } = useContext(CategoryContext); // Pobieramy dane z kontekstu
 
+    const userID = localStorage.getItem("userId");
     useEffect(() => {
         fetchAllCategories(); // Pobieramy dane po załadowaniu komponentu
-    }, []); // Pusta tablica oznacza, że efekt wykona się tylko raz, po montowaniu komponentu
+    }, [userID]); // Pusta tablica oznacza, że efekt wykona się tylko raz, po montowaniu komponentu
 
     return (
         <ul className={styles.categories_list}>

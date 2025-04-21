@@ -2,11 +2,13 @@ import styles from "./ModalInput.module.css";
 import Modal from "../../UI/ModalWindow/Modal";
 import React, { useState, useContext } from "react";
 
-import { DataContext } from "../../../store/DataContext";
+import { CategoryContext } from "../../../store/CategoryContext";
 import { ModalWindowContext } from "../../../store/ModalWindowProvider";
+import { LoginContext } from "../../../store/LoginProvider";
 
 const ModalInput = (props) => {
-    const { addNewCategory } = useContext(DataContext);
+    const { addNewCategory } = useContext(CategoryContext);
+    const { email } = useContext(LoginContext);
     const modalContext = useContext(ModalWindowContext);
     const newCategoryInput = React.createRef();
 
@@ -20,8 +22,8 @@ const ModalInput = (props) => {
         const newCategory = {
             title: newCategoryInput.current.value,
             user: {
-                id: 10027,
-                email: "email3@gmail.com",
+                id: localStorage.getItem("userId"),
+                email: localStorage.getItem("email"),
             },
         };
 

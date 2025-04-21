@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { DataContext } from "./DataContext";
+import React, { useContext, useState } from "react";
+import { CategoryContext } from "./CategoryContext";
+import { LoginContext } from "./LoginProvider";
 
-const DataProvider = ({ children }) => {
+const CategoryProvider = ({ children }) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const { email } = useContext(LoginContext);
 
     const fetchData = async (url, options) => {
         setLoading(true);
@@ -31,7 +33,7 @@ const DataProvider = ({ children }) => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: "email3@gmail.com",
+                    body: localStorage.getItem("email"),
                 }
             );
 
@@ -131,7 +133,7 @@ const DataProvider = ({ children }) => {
     };
 
     return (
-        <DataContext.Provider
+        <CategoryContext.Provider
             value={{
                 data,
                 loading,
@@ -142,8 +144,8 @@ const DataProvider = ({ children }) => {
             }}
         >
             {children}
-        </DataContext.Provider>
+        </CategoryContext.Provider>
     );
 };
 
-export default DataProvider;
+export default CategoryProvider;

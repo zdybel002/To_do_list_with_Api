@@ -14,7 +14,7 @@ const TaskProvider = ({ children }) => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    email: "email3@gmail.com",
+                    email: localStorage.getItem("email"),
                     categoryId: categoryId,
                     pageNumber: 0,
                     completed: 0,
@@ -51,7 +51,7 @@ const TaskProvider = ({ children }) => {
                         id: categoryId,
                     },
                     user: {
-                        id: 10027,
+                        id: localStorage.getItem("userId"),
                     },
                 }),
             });
@@ -92,10 +92,15 @@ const TaskProvider = ({ children }) => {
 
     const updateTask = async (taskID, categoryTitle) => {
         const task = taskData.find((t) => t.id === taskID);
+        console.log("result TASK", task);
         const updatedTask = {
             ...task,
             title: categoryTitle, // <- tylko to zmieniasz
+            user: {
+                id: Number(localStorage.getItem("userId")),
+            },
         };
+        console.log("UpdateTask", updatedTask);
 
         try {
             const response = await fetch("http://localhost:8080/task/update", {

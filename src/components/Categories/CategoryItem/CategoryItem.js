@@ -2,12 +2,12 @@ import React, { useState, useContext } from "react";
 import CategoryItemMenu from "../CategoryMenu/CategoryItemMenu";
 import EditableText from "./EditableText";
 
-import { DataContext } from "../../../store/DataContext";
+import { CategoryContext } from "../../../store/CategoryContext";
 
 import styles from "./CategoryItem.module.css";
 
 const CategoryItem = (props) => {
-    const { removeCategory } = useContext(DataContext); // Pobieramy dane z kontekstu
+    const { removeCategory } = useContext(CategoryContext); // Pobieramy dane z kontekstu
 
     const [showMenu, setShowMenu] = useState(false);
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
@@ -49,13 +49,7 @@ const CategoryItem = (props) => {
         setClicked(false);
     };
 
-    //Delete category
-
     const handleDelete = () => {
-        // const confirmed = window.confirm("Na pewno chcesz usunąć?");
-        // if (confirmed) {
-        //     alert("Element usunięty!");
-        // }
         removeCategory(props.id);
         setShowMenu(false);
     };

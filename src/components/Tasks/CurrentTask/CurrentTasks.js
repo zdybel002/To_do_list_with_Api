@@ -5,8 +5,7 @@ import CurrentTaskItem from "./CurrentTaskItem";
 import styles from "./CurrentTasks.module.css";
 
 function CurrentTasks(props) {
-    const { categoryId, categoryTitle, taskData, deleteTask } =
-        useContext(TaskContext);
+    const { categoryTitle, taskData } = useContext(TaskContext);
 
     const [currentOrFinishe, setCurrentOrFinished] = useState(0);
 

@@ -11,10 +11,7 @@ const MainHeader = (props) => {
                 <img src={logo} alt="some" className={styles.header_img_logo} />
                 <h3 className={styles.header_logo_heading}>Task Manager</h3>
             </div>
-            <Navigation
-                isAutherticated={props.isAutherticated}
-                onLogout={props.onLogout}
-            />
+            <Navigation />
         </header>
     );
 };

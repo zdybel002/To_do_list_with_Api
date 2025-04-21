@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { DataContext } from "../../../store/DataContext";
+import { CategoryContext } from "../../../store/CategoryContext";
 import { TaskContext } from "../../../store/TaskContext";
 
 function EditableText(props) {
     const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState("start");
 
-    const { updateCategory } = useContext(DataContext); // Pobieramy dane z kontekstu
+    const { updateCategory } = useContext(CategoryContext); // Pobieramy dane z kontekstu
     const { setCategoryId, setCategoryTitle, fetchTasks } =
         useContext(TaskContext);
 
@@ -28,7 +28,7 @@ function EditableText(props) {
                 id: props.id,
                 title: text,
                 user: {
-                    id: props.user.id,
+                    id: localStorage.getItem("userId"),
                 },
             });
             props.onHandleClick(false);
@@ -42,7 +42,7 @@ function EditableText(props) {
             id: props.id,
             title: text,
             user: {
-                id: props.user.id,
+                id: localStorage.getItem("userId"),
             },
         });
         props.onHandleClick(false);
