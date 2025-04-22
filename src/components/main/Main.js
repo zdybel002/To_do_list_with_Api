@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import CurrentTask from "../Tasks/CurrentTask/CurrentTasks";
+import AllTasks from "../Tasks/AllTasks";
 
 import Categories from "../Categories/AllCategories/Categories";
 import Wrapper from "../UI/Categoriy_list_wraper/Wrapper";
@@ -12,26 +12,17 @@ import TaskProvider from "../../store/TaskProvider";
 import styles from "./Main.module.css";
 
 function Tasks() {
-    const [idTakenCategory, setIdTakenCategory] = useState([]);
-    const addCurrentTasks = (taken_values) => {
-        console.log(taken_values);
-        setIdTakenCategory(taken_values);
-    };
-
     return (
         <React.Fragment>
             <div className={styles.taskContainer}>
                 <TaskProvider>
                     <div className={styles.rightNav}>
-                        <Categories onAddCurrentTasks={addCurrentTasks} />
-
+                        <Categories />
                         <NewCategory />
                     </div>
 
                     <div className={styles.CurrentTaskContainer}>
-                        <CurrentTask
-                            idOfCategory={idTakenCategory}
-                        ></CurrentTask>
+                        <AllTasks></AllTasks>
                         <NewTask></NewTask>
                     </div>
                 </TaskProvider>

@@ -6,7 +6,15 @@ const TaskProvider = ({ children }) => {
     const [categoryTitle, setCategoryTitle] = useState();
     const [taskData, setTaskData] = useState([]);
 
-    const fetchTasks = async (categoryId) => {
+    const [taskStatus, setTaskStatus] = useState(0);
+
+    const handleChangeStatus = (event) => {
+        const newStatus = event === "current" ? 0 : 1;
+        setTaskStatus(newStatus);
+        fetchTasks(categoryId, newStatus);
+    };
+
+    const fetchTasks = async (categoryId, status) => {
         try {
             const response = await fetch("http://localhost:8080/task/search", {
                 method: "POST",
@@ -17,7 +25,7 @@ const TaskProvider = ({ children }) => {
                     email: localStorage.getItem("email"),
                     categoryId: categoryId,
                     pageNumber: 0,
-                    completed: 0,
+                    completed: status,
                     pageSize: 100,
                     sortColumn: "taskDate",
                     sortDirection: "asc",
@@ -29,7 +37,7 @@ const TaskProvider = ({ children }) => {
             }
 
             const data = await response.json();
-            console.log("Response from server FetchTascks: ", data);
+            console.log("Response from server FetchTasks: ", data);
             setTaskData(data.content);
         } catch (error) {
             console.error("Error:", error);
@@ -84,7 +92,7 @@ const TaskProvider = ({ children }) => {
                 throw new Error(`Server error: ${response.status}`);
             }
 
-            fetchTasks(categoryId);
+            fetchTasks(categoryId, taskStatus);
         } catch (error) {
             console.error("Error:", error);
         }
@@ -115,7 +123,7 @@ const TaskProvider = ({ children }) => {
                 throw new Error(`Server error: ${response.status}`);
             }
 
-            fetchTasks(categoryId);
+            fetchTasks(categoryId, taskStatus);
         } catch (error) {
             console.error("Error:", error);
         }
@@ -146,7 +154,7 @@ const TaskProvider = ({ children }) => {
                 throw new Error(`Server error: ${response.status}`);
             }
 
-            fetchTasks(categoryId);
+            fetchTasks(categoryId, taskStatus);
         } catch (error) {
             console.error("Error:", error);
         }
@@ -165,6 +173,8 @@ const TaskProvider = ({ children }) => {
                 deleteTask,
                 updateTask,
                 updateTaskStatus,
+                taskStatus,
+                handleChangeStatus,
             }}
         >
             {children}

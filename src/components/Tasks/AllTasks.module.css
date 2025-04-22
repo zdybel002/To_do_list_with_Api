@@ -1,0 +1,40 @@
+/* .main_task_btm {
+    margin-bottom: 10px;
+}
+.current_list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+} */
+
+.currentTaskHeader {
+    text-align: center;
+}
+
+.categoryHeading {
+    padding: 20px;
+    font-size: 30px;
+}
+.selectCurrent {
+    padding: 10px;
+    color: white;
+    background-color: #6f81fd; /* niebieski dla aktualnych */
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.selectFinished {
+    padding: 10px;
+    color: white;
+    background-color: #3e3a3e; /* zielony dla zakończonych */
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}

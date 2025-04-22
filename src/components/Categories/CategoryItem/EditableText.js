@@ -9,7 +9,7 @@ function EditableText(props) {
     const [text, setText] = useState("start");
 
     const { updateCategory } = useContext(CategoryContext); // Pobieramy dane z kontekstu
-    const { setCategoryId, setCategoryTitle, fetchTasks } =
+    const { setCategoryId, setCategoryTitle, fetchTasks, taskStatus } =
         useContext(TaskContext);
 
     useEffect(() => {
@@ -53,7 +53,7 @@ function EditableText(props) {
     const takeCategoryID = () => {
         setCategoryId(props.id);
         setCategoryTitle(props.title);
-        fetchTasks(props.id);
+        fetchTasks(props.id, taskStatus);
         console.log("Category ID ", props.id);
     };
 
