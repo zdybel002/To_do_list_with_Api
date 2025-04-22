@@ -4,7 +4,7 @@ import styles from "./CurrentTaskItem.module.css";
 import TaskItemMenu from "./TaskItemMenu";
 
 const CurrentTaskItem = (props) => {
-    const { taskData, deleteTask, updateTask, updateTaskStatus } =
+    const { taskData, deleteTask, updateTask, taskStatus, updateTaskStatus } =
         useContext(TaskContext);
     const [checkedState, setCheckedState] = useState({});
 
@@ -97,13 +97,15 @@ const CurrentTaskItem = (props) => {
 
     return (
         <li className={styles.taskLiItem}>
-            <input
-                id={props.id}
-                type="checkbox"
-                className={styles.currentTaskCheckbox}
-                checked={checkedState[props.id] || false}
-                onChange={handleCheckboxChange}
-            />
+            {!taskStatus && (
+                <input
+                    id={props.id}
+                    type="checkbox"
+                    className={styles.currentTaskCheckbox}
+                    checked={checkedState[props.id] || false}
+                    onChange={handleCheckboxChange}
+                />
+            )}
 
             {isEditing ? (
                 <input
