@@ -1,0 +1,67 @@
+.profileCard {
+    padding: 20px;
+    background-color: #f0f4ff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.profileTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    margin: 6px 0;
+    color: #444;
+}
+
+.profileContainer {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    margin: auto;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.profileTitle {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.profileField {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.profileField strong {
+    color: #34495e;
+}
+
+.loadingMessage {
+    font-size: 1.2rem;
+    color: #888;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

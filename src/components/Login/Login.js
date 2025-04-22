@@ -14,6 +14,8 @@ const Login = () => {
         checkLogin(email, password);
     };
 
+    // Profile context
+
     return (
         <Card className={styles.login}>
             <div className={styles.loginContainer}>

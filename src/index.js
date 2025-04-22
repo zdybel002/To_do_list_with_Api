@@ -5,11 +5,14 @@ import "./index.css";
 import App from "./App";
 import { ModalWindowProvider } from "./store/ModalWindowProvider";
 import LoginProvider from "./store/LoginProvider";
+import { ProfileWindowProvider } from "./store/ProfileWindowProvider";
 ReactDOM.render(
     <LoginProvider>
-        <ModalWindowProvider>
-            <App />
-        </ModalWindowProvider>
+        <ProfileWindowProvider>
+            <ModalWindowProvider>
+                <App />
+            </ModalWindowProvider>
+        </ProfileWindowProvider>
     </LoginProvider>,
     document.getElementById("root")
 );
