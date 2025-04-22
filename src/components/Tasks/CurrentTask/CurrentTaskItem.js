@@ -4,7 +4,8 @@ import styles from "./CurrentTaskItem.module.css";
 import TaskItemMenu from "./TaskItemMenu";
 
 const CurrentTaskItem = (props) => {
-    const { taskData, deleteTask, updateTask } = useContext(TaskContext);
+    const { taskData, deleteTask, updateTask, updateTaskStatus } =
+        useContext(TaskContext);
     const [checkedState, setCheckedState] = useState({});
 
     const handleCheckboxChange = (event) => {
@@ -17,7 +18,7 @@ const CurrentTaskItem = (props) => {
         }));
 
         if (checked) {
-            deleteTask(checkboxId);
+            updateTaskStatus(props.id);
         }
     };
 
@@ -89,6 +90,11 @@ const CurrentTaskItem = (props) => {
         setIsEditing(true);
     };
 
+    // Delete handler
+    const handlerDelete = () => {
+        deleteTask(props.id);
+    };
+
     return (
         <li className={styles.taskLiItem}>
             <input
@@ -119,7 +125,11 @@ const CurrentTaskItem = (props) => {
             )}
 
             {showMenu && (
-                <TaskItemMenu position={menuPosition} onEdit={handleEdit} />
+                <TaskItemMenu
+                    position={menuPosition}
+                    onEdit={handleEdit}
+                    onDelete={handlerDelete}
+                />
             )}
         </li>
     );

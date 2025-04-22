@@ -14,6 +14,9 @@ function TaskItemMenu({ position, onEdit, onDelete, onClose }) {
             <button onClick={onEdit} className={styles.buttonStyle}>
                 Edit
             </button>
+            <button onClick={onDelete} className={styles.buttonStyle}>
+                delete
+            </button>
         </div>
     );
 }

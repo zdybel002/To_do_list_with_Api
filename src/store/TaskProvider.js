@@ -121,6 +121,37 @@ const TaskProvider = ({ children }) => {
         }
     };
 
+    const updateTaskStatus = async (taskID) => {
+        const task = taskData.find((t) => t.id === taskID);
+        console.log("result TASK", task);
+        const updatedTask = {
+            ...task,
+            completed: true,
+            user: {
+                id: Number(localStorage.getItem("userId")),
+            },
+        };
+        console.log("UpdateTask", updatedTask);
+
+        try {
+            const response = await fetch("http://localhost:8080/task/update", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedTask),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            fetchTasks(categoryId);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
     return (
         <TaskContext.Provider
             value={{
@@ -133,6 +164,7 @@ const TaskProvider = ({ children }) => {
                 AddNewTask,
                 deleteTask,
                 updateTask,
+                updateTaskStatus,
             }}
         >
             {children}
