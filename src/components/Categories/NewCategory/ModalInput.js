@@ -1,6 +1,6 @@
 import styles from "./ModalInput.module.css";
 import Modal from "../../UI/ModalWindow/Modal";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { CategoryContext } from "../../../store/CategoryContext";
 import { ModalWindowContext } from "../../../store/ModalWindowProvider";
@@ -49,6 +49,11 @@ const ModalInput = (props) => {
                 type="text"
                 placeholder="Name of new Category"
                 className={styles.newCategoryInput}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                        handleAddCategory(e);
+                    }
+                }}
             />
 
             {errorMessage && (
